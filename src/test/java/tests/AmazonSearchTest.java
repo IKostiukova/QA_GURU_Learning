@@ -11,14 +11,15 @@ import static com.codeborne.selenide.Selenide.open;
 public class AmazonSearchTest {
 
     @Test
-    void searchResultTest() throws InterruptedException {
+    void searchResultTest() {
         open("https://www.amazon.com/");
 
         $(byName("field-keywords")).setValue("Test Automation Engineer").pressEnter();
-        Thread.sleep(1000);
+        sleep(1000);
         $(byPartialLinkText("Test Automation Engineer")).click();
-        Thread.sleep(1000);
+        sleep(1000);
 
-        $(byId("productTitle")).shouldHave(text("Test Automation Engineer: Guide to the ISTQB Advanced Level Certification"));
+        $("#productTitle").shouldHave(text("Test Automation Engineer: Guide to the ISTQB Advanced Level Certification"));
+        $("#tmmSwatches .a-color-price").shouldHave(text("$41.16"));
     }
 }
