@@ -12,30 +12,34 @@ import static com.codeborne.selenide.Selenide.open;
 public class ActitimeTests {
     @BeforeEach
     void openPage(){
+    }
+
+    @Test
+    void navigateToTryFreePageTest() {
         open("https://www.actitime.com/");
+        
+        $(byText("TRY FREE")).click();
+
+        $(".great-message__h1").shouldHave(text("Start Your Free Online Timesheet Trial"));
     }
 
     @Test
-    void navigateToTryFreePageTest(){
-        $(By.linkText("TRY FREE")).click();
+    void emailValidationTest() {
+        open("https://www.actitime.com/");
 
-        $(byClassName("great-message__h1")).shouldHave(text("Start Your Free Online Timesheet Trial"));
-    }
+        $(byText("TRY FREE")).click();
+        sleep(4000);
+        
+        $("#first-name").setValue("Lili").pressEnter();
+        sleep(4000);
+        $("#last-name").setValue("Popolos").pressEnter();
+        sleep(4000);
+        $("#email").setValue("lilip@gmail.com").pressEnter();
+        sleep(4000);
+        $("#start-trial-submit").click();
+        sleep(4000);
 
-    @Test
-    void emailValidationTest() throws InterruptedException {
-        $(By.linkText("TRY FREE")).click();
-        Thread.sleep(4000);
-        $(byId("first-name")).setValue("Lili").pressEnter();
-        Thread.sleep(4000);
-        $(byId("last-name")).setValue("Popolos").pressEnter();
-        Thread.sleep(4000);
-        $(byId("email")).setValue("lilip@gmail.com").pressEnter();
-        Thread.sleep(4000);
-        $(byId("start-trial-submit")).click();
-        Thread.sleep(4000);
-
-        $(byClassName("form-free-trial__errors"))
+        $(".form-free-trial__errors")
                 .shouldHave(text("Cannot validate the specified e-mail address"));
     }
 }
