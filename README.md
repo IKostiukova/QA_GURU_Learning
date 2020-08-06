@@ -1,1 +1,1 @@
-# QA_GURU_Learning
+# qa_guru_course_2
