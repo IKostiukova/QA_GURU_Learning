@@ -6,8 +6,7 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.*;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class ActitimeTests {
     @BeforeEach
@@ -28,16 +27,16 @@ public class ActitimeTests {
         open("https://www.actitime.com/");
 
         $(byText("TRY FREE")).click();
-        sleep(4000);
+        sleep(2000);
         
         $("#first-name").setValue("Lili").pressEnter();
-        sleep(4000);
+        sleep(2000);
         $("#last-name").setValue("Popolos").pressEnter();
-        sleep(4000);
+        sleep(2000);
         $("#email").setValue("lilip@gmail.com").pressEnter();
-        sleep(4000);
+        sleep(2000);
         $("#start-trial-submit").click();
-        sleep(4000);
+        sleep(2000);
 
         $(".form-free-trial__errors")
                 .shouldHave(text("Cannot validate the specified e-mail address"));
