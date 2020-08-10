@@ -1,17 +1,12 @@
 package tests;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class ActitimeTests {
-    @BeforeEach
-    void openPage(){
-    }
 
     @Test
     void navigateToTryFreePageTest() {
@@ -28,7 +23,7 @@ public class ActitimeTests {
 
         $(By.linkText("TRY FREE")).click();
         sleep(2000);
-        
+
         $("#first-name").setValue("Lili").pressEnter();
         sleep(2000);
         $("#last-name").setValue("Popolos").pressEnter();
